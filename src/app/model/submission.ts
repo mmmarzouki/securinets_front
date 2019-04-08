@@ -1,10 +1,11 @@
 import {Team} from './team';
 
 enum Status {
-    Accepted,
-    Rejected,
-    Pending,
-    BeingJudged
+    Accepted= 'Accepted',
+    Rejected= 'Rejected',
+    Pending= 'Pending',
+    BeingJudged= 'BeingJudged',
+    New= 'New',
 }
 
 export class Submission {
