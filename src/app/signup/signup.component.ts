@@ -21,7 +21,6 @@ export class SignupComponent implements OnInit {
     }
 
     login() {
-        console.log(this.teamForm)
         localStorage.setItem('team', JSON.stringify(this.teamForm));
         this.router.navigate(['/home'])
     }

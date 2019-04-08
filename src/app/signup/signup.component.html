@@ -4,14 +4,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                        <div class="card card-register">
-                            <h3 class="title">Login</h3>
+                        <div class="card card-register custom-background">
+                            <h3 class="title text-white">Login</h3>
                             <form class="register-form">
                                 <label>Team Name</label>
                                 <input type="text" id="name" name="name" [(ngModel)]="teamForm.name" class="form-control" placeholder="Team Name">
                                 <label>Password</label>
                                 <input type="password" id="password" name="password" [(ngModel)]="teamForm.password" class="form-control" placeholder="Password">
-                                <button class="btn btn-danger btn-block btn-round" (click)="login()">Login</button>
+                                <button type="button" class="btn btn-default btn-block btn-round custom-color-button" (click)="login()">Login</button>
                             </form>
                         </div>
                     </div>

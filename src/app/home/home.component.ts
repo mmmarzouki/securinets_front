@@ -16,4 +16,9 @@ export class HomeComponent implements OnInit {
             this.router.navigate(['login'])
         }
     }
+
+    disconnect() {
+        localStorage.removeItem('team');
+        this.router.navigate(['login'])
+    }
 }
