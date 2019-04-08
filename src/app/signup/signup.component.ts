@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {Team} from '../model/team';
 
 @Component({
     selector: 'app-signup',
@@ -6,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-    test : Date = new Date();
 
-    constructor() { }
+    teamForm: Team= new Team('', '');
 
-    ngOnInit() {}
+    constructor(private router: Router) { }
+
+    ngOnInit() {
+        const team = localStorage.getItem('team');
+        if (team != null) {
+            this.router.navigate(['login'])
+        }
+    }
+
+    login() {
+        console.log(this.teamForm)
+        localStorage.setItem('team', JSON.stringify(this.teamForm));
+        this.router.navigate(['/home'])
+    }
 }
