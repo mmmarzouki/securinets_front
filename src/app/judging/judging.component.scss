@@ -1,0 +1,28 @@
+.change-cursor{
+  cursor: pointer;
+}
+.custom-background {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.custom-color-button {
+  background: black;
+  border: black;
+}
+.background-card {
+  background: rgba(178,34,34,0.25);
+  border-radius: 20px;
+}
+
+.background-nav {
+  background: rgba(52,58,64,0.5);
+  height: 9vh;
+}
+.center-btn{
+  vertical-align: center;
+}
+.custom-height-btn{
+  position: relative;
+  top: -10px;
+}

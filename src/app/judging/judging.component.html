@@ -17,37 +17,51 @@
     </nav>
     <perfect-scrollbar style="max-height: calc(100% - 12vh);" [config]="config">
 
-        <div class=" container container-fluid text-white text-center background-card mt-3">
+        <div class=" container container-fluid text-white text-center background-card mt-2">
             <div class="row font-weight-bold">
-                <div class="col-sm-3 col-md-3 col-lg-3 change-cursor" (click)="sortBy('time')">
+                <div class="col-sm-2 col-md-2 col-lg-2 change-cursor" (click)="sortBy('time')">
                     time
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 change-cursor" (click)="sortBy('status')">
+                <div class="col-sm-2 col-md-2 col-lg-2 change-cursor" (click)="sortBy('status')">
                     status
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 change-cursor" (click)="sortBy('score')">
+                <div class="col-sm-2 col-md-2 col-lg-2 change-cursor" (click)="sortBy('team id')">
+                    team id
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    file
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 change-cursor" (click)="sortBy('score')">
                     score gained
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    file
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    judge
                 </div>
             </div>
             <hr>
             <div *ngFor="let submission of submissions" class="row">
-                <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="col-sm-2 col-md-2 col-lg-2">
                     {{submission.time}}
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="col-sm-2 col-md-2 col-lg-2">
                     {{submission.status}}
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    {{submission.score}}
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    {{submission.team.id}}
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 center-btn">
+                <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
                         <button type="submit" class="btn btn-outline-success center-btn custom-height-btn"
                                 (click)="showFile(submission.id)">preview file
                         </button>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    {{submission.score}}
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
+                    <div class="center-btn">
+                        <button type="submit" class="btn btn-outline-success center-btn custom-height-btn">preview file</button>
                     </div>
                 </div>
                 <hr>

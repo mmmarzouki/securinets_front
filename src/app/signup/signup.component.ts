@@ -11,7 +11,7 @@ import {TeamService} from '../services/team.service';
 export class SignupComponent implements OnInit {
 
     isWrong= ' ';
-    teamForm: Team= new Team('', '');
+    teamForm: Team= new Team(0, '', '', 0);
     hasDanger= ' ';
     hidden= false;
 
@@ -29,14 +29,17 @@ export class SignupComponent implements OnInit {
         this.hasDanger = ' ';
         this.hidden = false;
         this.teamService.login(this.teamForm).subscribe(team => {
-            console.log(team);
-           if ( team === null || team === null ) {
+           if ( team === null || team === undefined ) {
                this.hasDanger = 'has-danger';
                this.isWrong = 'form-control-danger';
                this.hidden = true;
            } else {
                localStorage.setItem('team', JSON.stringify(team));
-               this.router.navigate(['/home']);
+               if (team.name.startsWith('judge')) {
+                   this.router.navigate(['/judge']);
+               }else {
+                   this.router.navigate(['/home']);
+               }
            }
         });
     }
