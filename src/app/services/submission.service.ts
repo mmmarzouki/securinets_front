@@ -13,14 +13,14 @@ const httpOptions = {
 })
 export class SubmissionService {
 
-  private url:string="http://localhost:8080/submission/";
+  private url= 'http://localhost:8080/submission/';
 
   constructor(private http: HttpClient) { }
 
-  public findAll():Observable<Submission[]>{
+  public findAll(): Observable<Submission[]> {
     return this.http.get<Submission[]>(this.url);
   }
-  public findByTeam(id:number):Observable<Submission[]>{
-    return this.http.get<Submission[]>(this.url+id);
+  public findByTeam(id: number): Observable<Submission[]> {
+    return this.http.get<Submission[]>(this.url + id);
   }
 }

@@ -12,11 +12,11 @@ const httpOptions = {
 })
 export class TeamService {
 
-  private urlConnection:string="http://localhost:8080/login";
+
+  private urlConnection= 'http://localhost:8080/login';
 
   constructor(private http: HttpClient) { }
-
-  public login(team:Team):Observable<Team>{
-    return this.http.post<Team>(this.urlConnection,team,httpOptions);
+  public login(team: Team): Observable<Team> {
+    return this.http.post<Team>(this.urlConnection, team, httpOptions);
   }
 }
