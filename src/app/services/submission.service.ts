@@ -4,7 +4,10 @@ import {Observable} from 'rxjs';
 import {Submission} from '../model/submission';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+};
+const httpOptionDownload = {
+  headers: new HttpHeaders({  'responseType': 'blob', 'Access-Control-Allow-Origin': '*'})
 };
 
 @Injectable({
@@ -14,6 +17,7 @@ export class SubmissionService {
 
   private urlSubmission= 'http://localhost:8080/submission/';
   private urlReport= 'http://localhost:8080/report/';
+  private urlSubmit= 'http://localhost:8080/submit/';
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +29,9 @@ export class SubmissionService {
   }
 
   public downloadPDF(id: number ): Observable<any> {
-    return this.http.get(this.urlReport + id, {  responseType: 'blob'})
+    return this.http.get(this.urlReport + id, )
+  }
+  public submit(form: FormData): Observable<any> {
+    return this.http.post(this.urlSubmit, form, httpOptionDownload);
   }
 }

@@ -9,7 +9,7 @@
     </span>
         </div>
         <form class="form-inline">
-            <button type="button" class="btn btn-outline-danger btn-round" (click)="upload()">upload report</button>
+            <app-upload-file [submissions]="submissions" [team]="team"></app-upload-file>
         </form>
         <form class="form-inline">
             <button type="button" class="btn btn-outline-danger btn-round" (click)="disconnect()">Disconnect</button>

@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     }
     ngOnInit() {
         this.team = JSON.parse(localStorage.getItem('team'));
-        console.log(this.team)
         if (this.team === null) {
             this.router.navigate(['login'])
         }

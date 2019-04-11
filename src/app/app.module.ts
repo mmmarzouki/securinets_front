@@ -21,7 +21,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { HomeModule } from './home/home.module';
-import { UploadFileComponent } from './upload-file/upload-file.component';
+import {UploadFileComponent} from './upload-file/upload-file.component';
+import { JudgingComponent } from './judging/judging.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -35,7 +36,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    UploadFileComponent
+    JudgingComponent,
   ],
   imports: [
     BrowserModule,
