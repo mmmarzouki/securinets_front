@@ -7,11 +7,14 @@
                         <div class="card card-register custom-background mt-2 pb-3">
                             <h3 class="title text-white">Login</h3>
                             <form class="register-form">
-                                <label>Team Name</label>
-                                <input type="text" id="name" name="name" [(ngModel)]="teamForm.name" class="form-control" placeholder="Team Name">
-                                <label>Password</label>
-                                <input type="password" id="password" name="password" [(ngModel)]="teamForm.password" class="form-control" placeholder="Password">
-                                <button type="button" class="btn btn-outline-success btn-block btn-round" (click)="login()">Login</button>
+                                <div class="form-group {{hasDanger}}">
+                                    <label>Team Name</label>
+                                    <input type="text" class="form-control {{isWrong}}" id="name" name="name" [(ngModel)]="teamForm.name" placeholder="Team Name">
+                                    <label>Password</label>
+                                    <input type="password" id="password" name="password" [(ngModel)]="teamForm.password" class="form-control {{isWrong}}" placeholder="Password">
+                                    <button type="button" class="btn btn-outline-success btn-block btn-round" (click)="login()">Login</button>
+                                </div>
+                                <div _ngcontent-c4="" *ngIf="hidden" class="form-control-feedback text-center font-weight-bold">Team Name or Password invalid</div>
                             </form>
                         </div>
                     </div>

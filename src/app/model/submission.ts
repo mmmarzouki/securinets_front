@@ -13,6 +13,7 @@ export class Submission {
         public id: number,
         public team: Team,
         public time: string,
-        public status: Status
+        public status: Status,
+        public score: number
     ) {}
 }

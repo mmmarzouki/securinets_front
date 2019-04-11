@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Team} from '../model/team';
 import {Observable} from 'rxjs';
 import {Submission} from '../model/submission';
 
