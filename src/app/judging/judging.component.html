@@ -5,12 +5,9 @@
       <a href="/">LOGO HERE</a>
     </span>
             <span>
-        <label class="ml-5">your score: {{team.score}}</label>
+        <label *ngIf="pendingReports != 0" class="ml-5 {{textDanger}}">Pending Reports: {{pendingReports}}</label>
     </span>
         </div>
-        <form class="form-inline">
-            <app-upload-file [submissions]="submissions" [team]="team"></app-upload-file>
-        </form>
         <form class="form-inline">
             <button type="button" class="btn btn-outline-danger btn-round" (click)="disconnect()">Disconnect</button>
         </form>
@@ -52,7 +49,7 @@
                 <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
                         <button type="submit" class="btn btn-outline-success center-btn custom-height-btn"
-                                (click)="showFile(submission.id)">preview file
+                                (click)="showFile(submission.id)">download report
                         </button>
                     </div>
                 </div>
@@ -61,7 +58,7 @@
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
-                        <button type="submit" class="btn btn-outline-success center-btn custom-height-btn">preview file</button>
+                        <button type="submit" class="btn btn-outline-warning center-btn custom-height-btn">judge</button>
                     </div>
                 </div>
                 <hr>

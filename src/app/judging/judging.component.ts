@@ -14,6 +14,9 @@ import * as fileSaver from 'file-saver';
 })
 export class JudgingComponent implements OnInit {
 
+  pendingReports = 1;
+  textDanger = 'text-danger'
+
   submissions: Submission[] = []
   public config: PerfectScrollbarConfigInterface = {};
 
