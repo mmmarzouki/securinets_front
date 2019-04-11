@@ -12,14 +12,19 @@ const httpOptions = {
 })
 export class SubmissionService {
 
-  private url= 'http://localhost:8080/submission/';
+  private urlSubmission= 'http://localhost:8080/submission/';
+  private urlReport= 'http://localhost:8080/report/';
 
   constructor(private http: HttpClient) { }
 
   public findAll(): Observable<Submission[]> {
-    return this.http.get<Submission[]>(this.url);
+    return this.http.get<Submission[]>(this.urlSubmission);
   }
   public findByTeam(id: number): Observable<Submission[]> {
-    return this.http.get<Submission[]>(this.url + id);
+    return this.http.get<Submission[]>(this.urlSubmission + id);
+  }
+
+  public downloadPDF(id: number ): Observable<any> {
+    return this.http.get(this.urlReport + id, {  responseType: 'blob'})
   }
 }

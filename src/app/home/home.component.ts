@@ -4,6 +4,8 @@ import {SubmissionService} from '../services/submission.service';
 import {Submission} from '../model/submission';
 import {Team} from '../model/team';
 
+import * as fileSaver from 'file-saver';
+
 import { PerfectScrollbarConfigInterface,
     PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
@@ -65,5 +67,11 @@ export class HomeComponent implements OnInit {
                 return -1
             });
         }
+    }
+
+    showFile(id: number) {
+        this.submissionService.downloadPDF(id).subscribe((blob: Blob) => {
+            fileSaver.saveAs(blob, 'report' + id + '.pdf');
+        })
     }
 }
