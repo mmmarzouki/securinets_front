@@ -23,6 +23,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import {UploadFileComponent} from './upload-file/upload-file.component';
 import { JudgingComponent } from './judging/judging.component';
+import {JudgeReportComponent, JudgeReportContentComponent} from './judge-report/judge-report.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -37,7 +38,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavbarComponent,
     FooterComponent,
     JudgingComponent,
+    JudgeReportComponent,
+    JudgeReportContentComponent,
   ],
+  entryComponents: [JudgeReportContentComponent],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),

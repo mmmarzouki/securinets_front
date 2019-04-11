@@ -2,7 +2,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark background-nav">
         <div class="navbar-brand mr-auto">
     <span>
-      <a href="/">LOGO HERE</a>
+      <a href="/">
+          <img src="../../assets/img/logo.png" height="50">
+      </a>
     </span>
             <span>
         <label *ngIf="pendingReports != 0" class="ml-5 {{textDanger}}">Pending Reports: {{pendingReports}}</label>
@@ -58,7 +60,7 @@
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
-                        <button type="submit" class="btn btn-outline-warning center-btn custom-height-btn">judge</button>
+                        <app-judge-report [submissions]="submissions" [submission]="submission" ></app-judge-report>
                     </div>
                 </div>
                 <hr>

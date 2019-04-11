@@ -25,13 +25,16 @@ export class SubmissionService {
     return this.http.get<Submission[]>(this.urlSubmission);
   }
   public findByTeam(id: number): Observable<Submission[]> {
-    return this.http.get<Submission[]>(this.urlSubmission + id);
+    return this.http.get<Submission[]>(this.urlSubmission + id, httpOptions);
   }
 
   public downloadPDF(id: number ): Observable<any> {
-    return this.http.get(this.urlReport + id, )
+    return this.http.get(this.urlReport + id, httpOptions)
   }
   public submit(form: FormData): Observable<any> {
     return this.http.post(this.urlSubmit, form, httpOptionDownload);
+  }
+  public judge(submission: Submission): Observable<Submission> {
+    return this.http.put<Submission>(this.urlSubmission, submission, httpOptions)
   }
 }
