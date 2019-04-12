@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit, OnDestroy {
                     };
                     return false;
                 });
-                console.log(missing.length);
                 missing.forEach(item => {
                     this.team.score += item.score;
                     localStorage.setItem('team', JSON.stringify(this.team));

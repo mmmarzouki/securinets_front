@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Submission} from '../model/submission';
+import {Status, Submission} from '../model/submission';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-notification',
@@ -11,7 +12,15 @@ export class NotificationComponent implements OnInit {
   @Input()
   submission: Submission;
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal) { }
+
+  isAccepted(): boolean {
+    return this.submission.status === Status.Accepted
+  }
+
+  isRejected(): boolean {
+    return this.submission.status === Status.Rejected
+  }
 
   ngOnInit() {
   }

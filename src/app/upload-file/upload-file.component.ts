@@ -9,7 +9,7 @@ import {Submission} from '../model/submission';
   selector: 'app-upload-file-content',
   templateUrl: './upload-file-content.html',
 })
-export class UploadFileContentComponent{
+export class UploadFileContentComponent {
 
   @Input() team: Team;
   @Input() submissions: Submission[];
