@@ -14,19 +14,27 @@ export class UploadFileContentComponent{
   @Input() team: Team;
   @Input() submissions: Submission[];
 
+  canUpload: boolean;
   file: any;
 
   constructor(public activeModal: NgbActiveModal, private submissionService: SubmissionService) {}
 
   setFile(event) {
+    this.canUpload = true;
     this.file = event.target.files[0];
+    if (this.file.size > 4194304) {
+      this.denyUpload()
+    }
+  }
+
+  denyUpload() {
+    this.canUpload = false;
   }
 
   send() {
     const formData = new FormData();
     formData.append('teamName', this.team.name);
     formData.append('file', this.file);
-    console.log(formData);
     this.submissionService.submit(formData).subscribe(res => {
       this.submissions.push(res);
     });

@@ -33,8 +33,11 @@ export class JudgingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.team = JSON.parse(localStorage.getItem('team'));
-        if (this.team === null) {
+        if (!this.team) {
             this.router.navigate(['login'])
+        }
+        if (!this.team.name.startsWith('judge')) {
+            this.router.navigate(['home']);
         }
         this.submissionService.findAll().subscribe(res => {
             this.submissions = res;
@@ -42,7 +45,7 @@ export class JudgingComponent implements OnInit, OnDestroy {
                 return s.status === Status.Pending
             }).length;
         })
-        this.timeoutFunction = interval(69000).subscribe(x => {
+        this.timeoutFunction = interval(5000).subscribe(x => {
             this.submissionService.findAll().subscribe(res => {
                 this.submissions = res;
                 this.pendingNumber = res.filter(s => {

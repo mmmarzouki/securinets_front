@@ -9,9 +9,13 @@
         <input id="teamName" name="teamName" type="text" value="{{team.name}}" hidden>
         <label>Report: </label>
         <input id="file" name="file" (change)="setFile($event)" class="form-control" type="file">
+        <div *ngIf="!canUpload">
+            <br>
+            <label class="font-weight-bold text-center">File size exceeded 4MB</label>
+        </div>
     </form>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" *ngIf="canUpload">
     <div class="left-side">
         <button type="button" class="btn btn-success btn-link" (click)="activeModal.close('Close click')" (click)="send()">Send</button>
     </div>
