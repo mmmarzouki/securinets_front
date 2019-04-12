@@ -1,6 +1,6 @@
 import {Team} from './team';
 
-enum Status {
+export enum Status {
     Accepted= 'Accepted',
     Rejected= 'Rejected',
     Pending= 'Pending',

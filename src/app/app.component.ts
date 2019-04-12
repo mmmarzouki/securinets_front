@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/filter';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -7,6 +8,7 @@ import 'rxjs/add/operator/filter';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
     constructor() {}
     ngOnInit() {}
 }

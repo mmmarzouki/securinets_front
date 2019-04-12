@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {SubmissionService} from '../services/submission.service';
 import {Submission} from '../model/submission';
@@ -8,6 +8,11 @@ import * as fileSaver from 'file-saver';
 
 import { PerfectScrollbarConfigInterface,
     PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
+import {UploadFileContentComponent} from '../upload-file/upload-file.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {interval} from 'rxjs';
+import {NotificationComponent} from '../notification/notification.component';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
     selector: 'app-home',
@@ -15,8 +20,9 @@ import { PerfectScrollbarConfigInterface,
     styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
+    timeoutFunction: any;
     submissions: Submission[] = []
     public config: PerfectScrollbarConfigInterface = {};
 
@@ -25,7 +31,7 @@ export class HomeComponent implements OnInit {
     @ViewChild(PerfectScrollbarComponent) componentRef?: PerfectScrollbarComponent;
     @ViewChild(PerfectScrollbarDirective) directiveRef?: PerfectScrollbarDirective;
 
-    constructor(private router: Router, private submissionService: SubmissionService) {
+    constructor(private router: Router, private submissionService: SubmissionService, private modalService: NgbModal) {
     }
     ngOnInit() {
         this.team = JSON.parse(localStorage.getItem('team'));
@@ -34,7 +40,25 @@ export class HomeComponent implements OnInit {
         }
         this.submissionService.findByTeam(this.team.id).subscribe(res => {
             this.submissions = res;
-        })
+        });
+        this.timeoutFunction = interval(69000).subscribe(x => {
+            this.submissionService.findByTeam(this.team.id).subscribe( res => {
+                if (res.length > this.submissions.length) {
+                    const missing = res.filter(item =>  this.submissions.indexOf(item) < 0);
+                    missing.forEach(item => {
+                        this.team.score += item.score;
+                        localStorage.setItem('team', JSON.stringify(this.team));
+                        this.openModal(item);
+                    })
+                }
+                this.submissions = res;
+            })
+        });
+    }
+
+    openModal(sub: Submission) {
+        const modal = this.modalService.open(NotificationComponent);
+        modal.componentInstance.submission = sub;
     }
 
     disconnect() {
@@ -72,5 +96,9 @@ export class HomeComponent implements OnInit {
         this.submissionService.downloadPDF(id).subscribe((blob: Blob) => {
             fileSaver.saveAs(blob, 'report' + id + '.pdf');
         })
+    }
+
+    ngOnDestroy(): void {
+        this.timeoutFunction.unsubscribe();
     }
 }

@@ -7,7 +7,7 @@
       </a>
     </span>
             <span>
-        <label *ngIf="pendingReports != 0" class="ml-5 {{textDanger}}">Pending Reports: {{pendingReports}}</label>
+        <label *ngIf="pendingNumber != 0" class="ml-5 {{textDanger}}">Pending Reports: {{pendingNumber}}</label>
     </span>
         </div>
         <form class="form-inline">
@@ -25,7 +25,7 @@
                     status
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 change-cursor" (click)="sortBy('team id')">
-                    team id
+                    team name
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2">
                     file
@@ -46,7 +46,7 @@
                     {{submission.status}}
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    {{submission.team.id}}
+                    {{submission.team.name}}
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-sm-2 col-md-2 col-lg-2 center-btn">
                     <div class="center-btn">
-                        <app-judge-report [submissions]="submissions" [submission]="submission" ></app-judge-report>
+                        <app-judge-report [changePendingNumber]="updatePendingNumber" [submissions]="submissions" [submission]="submission" ></app-judge-report>
                     </div>
                 </div>
                 <hr>

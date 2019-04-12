@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
@@ -21,9 +20,9 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { HomeModule } from './home/home.module';
-import {UploadFileComponent} from './upload-file/upload-file.component';
 import { JudgingComponent } from './judging/judging.component';
 import {JudgeReportComponent, JudgeReportContentComponent} from './judge-report/judge-report.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -40,8 +39,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     JudgingComponent,
     JudgeReportComponent,
     JudgeReportContentComponent,
+    NotificationComponent,
   ],
-  entryComponents: [JudgeReportContentComponent],
+  entryComponents: [JudgeReportContentComponent, NotificationComponent],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),

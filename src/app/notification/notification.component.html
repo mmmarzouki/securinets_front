@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h5 class="modal-title text-center">Notification for submission</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container" *ngIf="submission.status === 'ACCEPTED'">
+    <h5 class="text-center text-danger"> your submission got accepted, you gain {{submission.score}} points</h5>
+  </div>
+  <div class="container" *ngIf="submission.status === 'REJECTED'">
+    <h5 class="text-center text-danger"> your submission got rejected</h5>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="left-side">
+    <button type="button" class="btn btn-success btn-link" (click)="activeModal.close('Close click')" (click)="send()">Send</button>
+  </div>
+  <div class="divider"></div>
+  <div class="right-side">
+    <button type="button" class="btn btn-danger btn-link" (click)="activeModal.close('Close click')">Cancel</button>
+  </div>
+</div>
